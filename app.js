@@ -11,10 +11,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // use JWT auth to secure the api
-app.use(jwt());
+// app.use(jwt());
 
 // api routes
 app.use('/users', require('./api/users/user.controller'));
+app.use('/annuaire', require('./api/annuaire/annuaire.controller'));
 
 // global error handler
 app.use(errorHandler);
