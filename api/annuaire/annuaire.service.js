@@ -1,33 +1,31 @@
 const httpStatus = require('http-status-codes');
 const db = require('../../_helpers/db');
-// import annuaire from './annuaire.model';
+const Annuaire = db.Annuaire;
+const User = db.User;
 module.exports = {
     findAnnuaire,
 };
 
 async function findAnnuaire(title, adresse) {
-    console.log('title ==> ',title);
-    console.log('adresse ==> ',adresse);
-    let option = null;
-    option = { title: title };
-    return new Promise(function (resolve, reject) {
-        db.Annuaire.findOne(option)
-            .exec()
-            .then(result => {
-                console.log('111');
-                if(!result){
-                    reject(false);
-                    console.log('errrrrrrr');
-                }else {
-                    console.log('222');
-                    resolve(result);
-                    console.log('greaaaat');
-                }
-            })
-            .catch(function(err) {
-                console.log('il y a un erreur', err);
-            });
-    })
+
+    const getallData = function () {
+        return new Promise((resolve, reject) => {
+            Annuaire.find({})
+                .exec()
+                .then(function (results) {
+                    return resolve(results);
+                })
+                .catch(function (err) {
+                    reject(err);
+                });
+        });
+    };
+    try {
+        const data = await getallData();
+        return data;
+    } catch (error) {
+        throw error;
+    }
 }
 
 handleErrorCatch = (res, statusCode) => {
