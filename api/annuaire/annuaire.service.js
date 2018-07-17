@@ -10,7 +10,7 @@ async function findAnnuaire(title, adresse) {
 
     const getallData = function () {
         return new Promise((resolve, reject) => {
-            Annuaire.find({})
+            Annuaire.findOne({title: title})
                 .exec()
                 .then(function (results) {
                     return resolve(results);

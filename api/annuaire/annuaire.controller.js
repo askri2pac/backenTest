@@ -17,6 +17,8 @@ function findAnnuaire(req, res, next) {
             annuaire => {
                 console.log('data', annuaire);
                 console.log('yes');
+                // return annuaire;
+                return res.status(200).json(annuaire);
             }
         ).catch(err => next(err));
 }
