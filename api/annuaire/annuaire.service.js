@@ -1,6 +1,6 @@
 const httpStatus = require('http-status-codes');
 const db = require('../../_helpers/db');
-const Annuaire = db.Annuaire;
+const Annuaire = db.Produits;
 const User = db.User;
 module.exports = {
     findAnnuaire,

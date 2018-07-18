@@ -5,5 +5,5 @@ mongoose.Promise = global.Promise;
 
 module.exports = {
     User: require('../api/users/user.modal'),
-    Annuaire: require('../api/annuaire/annuaire.model')
+    Produits: require('../api/annuaire/annuaire.model')
 };
