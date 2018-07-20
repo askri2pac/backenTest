@@ -38,6 +38,7 @@ app.use(function (req, res, next) {
 // api routes
 app.use('/users', require('./api/users/user.controller'));
 app.use('/annuaire', require('./api/annuaire/annuaire.controller'));
+app.use('/activities', require('./api/activities/activitie.controller'));
 
 // global error handler
 app.use(errorHandler);

@@ -1,15 +1,15 @@
 const httpStatus = require('http-status-codes');
 const db = require('../../_helpers/db');
-const Annuaire = db.Produits;
+const activites = db.Activites;
 module.exports = {
-    findAnnuaire,
+    getActivies,
 };
 
-async function findAnnuaire(title, adresse) {
+async function getActivies() {
 
     const getallData = function () {
         return new Promise((resolve, reject) => {
-            Annuaire.findOne({title: title})
+            activites.find({})
                 .exec()
                 .then(function (results) {
                     return resolve(results);
