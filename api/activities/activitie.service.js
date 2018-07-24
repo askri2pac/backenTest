@@ -5,11 +5,11 @@ module.exports = {
     getActivies,
 };
 
-async function getActivies() {
+async function getActivies(term) {
 
     const getallData = function () {
         return new Promise((resolve, reject) => {
-            activites.find({})
+            activites.find({'nom': {'$regex' : term, '$options' : 'i'}})
                 .exec()
                 .then(function (results) {
                     return resolve(results);
