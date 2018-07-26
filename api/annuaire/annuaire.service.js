@@ -1,15 +1,19 @@
 const httpStatus = require('http-status-codes');
 const db = require('../../_helpers/db');
+const ObjectId = require('mongodb').ObjectID;
+
 const Annuaire = db.Produits;
 module.exports = {
     findAnnuaire,
 };
 
-async function findAnnuaire(title, adresse) {
+async function findAnnuaire(id, adresse) {
 
     const getallData = function () {
+        console.log('id ===>', id);
+        console.log('adresse ===>', adresse);
         return new Promise((resolve, reject) => {
-            Annuaire.findOne({title: title})
+            Annuaire.find({ $and: [ { activite: ObjectId(id) }, { adresse: adresse } ] })
                 .exec()
                 .then(function (results) {
                     return resolve(results);

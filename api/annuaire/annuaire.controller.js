@@ -10,9 +10,9 @@ module.exports = router;
 
 function findAnnuaire(req, res, next) {
     console.log('req ==> ', req.body);
-    const title = req.body.annuaire;
+    const id = req.body.annuaire;
     const adresse = req.body.adresse;
-    annuaireService.findAnnuaire(title, adresse)
+    annuaireService.findAnnuaire(id, adresse)
         .then(
             annuaire => {
                 console.log('data', annuaire);
