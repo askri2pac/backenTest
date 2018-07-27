@@ -13,7 +13,7 @@ async function findAnnuaire(id, adresse) {
         console.log('id ===>', id);
         console.log('adresse ===>', adresse);
         return new Promise((resolve, reject) => {
-            Annuaire.find({ $and: [ { activite: ObjectId(id) }, { adresse: adresse } ] })
+            Annuaire.find({ $and: [ { activite: ObjectId(id) }, { $text: { $search: adresse } } ] })
                 .exec()
                 .then(function (results) {
                     return resolve(results);

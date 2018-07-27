@@ -10,6 +10,6 @@ const schema = new Schema({
     phone: { type: String, unique: false, required: false},
     title: {type: String, unique: false, required: true}
 });
-
+schema.index( { adresse: "text" } );
 schema.set('toJSON',{ virtuals: true });
 module.exports = mongoose.model('produit', schema);

@@ -7,9 +7,15 @@ module.exports = {
 
 async function getActivies(term) {
 
+    const options = {};
+    options.activite = {'$regex': term, $options:'i'};
+   // options.activite = term;
+
     const getallData = function () {
+       // console.log(options.acticite);
         return new Promise((resolve, reject) => {
-            activites.find({'nom': {'$regex' : term, '$options' : 'i'}})
+           // activites.find (options.activite)
+            activites.find({ $text: { $search: term } })
                 .exec()
                 .then(function (results) {
                     return resolve(results);
