@@ -1,7 +1,7 @@
 require('rootpath')();
-const express = require('express');
+import express from 'express';
 const app = express();
-const cors = require('cors');
+import cors from 'cors'
 const bodyParser = require('body-parser');
 const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error_handler');

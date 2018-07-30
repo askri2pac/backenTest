@@ -10,18 +10,34 @@ module.exports = {
 async function findAnnuaire(id, adresse) {
 
     const getallData = function () {
-        console.log('id ===>', id);
-        console.log('adresse ===>', adresse);
-        return new Promise((resolve, reject) => {
-            Annuaire.find({ $and: [ { activite: ObjectId(id) }, { $text: { $search: adresse } } ] })
-                .exec()
-                .then(function (results) {
-                    return resolve(results);
-                })
-                .catch(function (err) {
-                    reject(err);
-                });
-        });
+
+        const isnum = /^\d+$/.test(id);
+
+        if (! isnum ) {
+            return new Promise((resolve, reject) => {
+                Annuaire.find({ $and: [ { activite: ObjectId(id) }, { $text: { $search: adresse } } ] })
+                    .exec()
+                    .then(function (results) {
+                        return resolve(results);
+                    })
+                    .catch(function (err) {
+                        reject(err);
+                    });
+            });
+        } else {
+            console.log('num');
+            return new Promise((resolve, reject) => {
+                Annuaire.find({ $and: [ { telephone: id }, { $text: { $search: adresse } } ] })
+                    .exec()
+                    .then(function (results) {
+                        return resolve(results);
+                    })
+                    .catch(function (err) {
+                        reject(err);
+                    });
+            });
+        }
+
     };
     try {
         const data = await getallData();
@@ -31,10 +47,11 @@ async function findAnnuaire(id, adresse) {
     }
 }
 
+/*
 handleErrorCatch = (res, statusCode) => {
     let status = statusCode || httpStatus.INTERNAL_SERVER_ERROR;
     return err => {
         console.error(err);
         return res.status(status).json(err);
     };
-};
+};*/
