@@ -1,0 +1,4 @@
+node_modules
+.idea
+node_modules/async/package.json
+node_modules/lodash/package.json

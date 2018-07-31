@@ -13,7 +13,7 @@ function getllActivities(req, res, next) {
   activitesService.getActivies(term)
       .then(
           activites => {
-              console.log('activites ==>', activites);
+             // console.log('activites ==>', activites);
               return res.status(200).json(activites);
           }
       )
